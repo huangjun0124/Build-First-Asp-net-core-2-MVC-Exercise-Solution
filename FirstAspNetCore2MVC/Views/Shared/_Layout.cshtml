@@ -4,10 +4,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Jun's First ASP Net core mvc</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-<div>
-    @RenderBody()
-</div>
+    <div>
+        <div class="container body-content">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
 </body>
 </html>
