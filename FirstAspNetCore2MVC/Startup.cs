@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FirstAspNetCore2MVC.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +18,13 @@ namespace FirstAspNetCore2MVC
         {
             // add support for mvc
             services.AddMvc();
+
+            /*
+            Transient objects are always different; a new instance is provided to every controller and every service；
+            Scoped objects are the same within a request, but different across different requests；
+            Singleton objects are the same for every object and every request(regardless of whether an instance is provided in ConfigureServices)
+            */
+            services.AddTransient<IPieRepository, MockPieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

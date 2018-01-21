@@ -1,0 +1,12 @@
+﻿@model FirstAspNetCore2MVC.ViewModels.HomeViewModel
+    
+<h1>
+    @Model.Title
+</h1>
+@foreach (var pie in Model.PieList)
+{
+    <div>
+        <h2>@pie.Name</h2>
+        <h3>@pie.Price.ToString("C")</h3>
+    </div>
+}
