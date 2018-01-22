@@ -1,0 +1,16 @@
+﻿this folder and files under it are auto-generated following steps:
+1. Create a DBContext
+2. Build project
+3. Open Package Manager Console
+4. Run command "add-migration InitialMigration"
+
+
+After done, run command "update-database"
+	--ef will create db and tables automatically
+
+
+Then, create a Class "DbInitializer"
+	--modify program to run it
+
+If you modify the context or table class
+	--goto Package Manager Console, rerun "add-migration InitialMigration", then "update-database"
