@@ -10,7 +10,7 @@ After done, run command "update-database"
 
 
 Then, create a Class "DbInitializer"
-	--modify program to run it
+	--modify program.cs to call it
 
 If you modify the context or table class
 	--goto Package Manager Console, rerun "add-migration InitialMigration", then "update-database"

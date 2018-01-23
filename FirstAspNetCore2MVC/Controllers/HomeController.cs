@@ -30,5 +30,14 @@ namespace FirstAspNetCore2MVC.Controllers
             };
             return View(model);
         }
+
+        //http://localhost:51056/Home/Details?id=1
+        public IActionResult Details(int id)
+        {
+            var pie = PieRepository.GetPieById(id);
+            if (pie == null)
+                return NotFound();
+            return View(pie);
+        }
     }
 }

@@ -47,8 +47,17 @@ namespace FirstAspNetCore2MVC
             app.UseStatusCodePages();
             // go and search static files(image, css, js, html, etc) in wwwroot folder by default and return
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            // maps to {controller=Home}/{action=index}/{id?}
+            //app.UseMvcWithDefaultRoute();
             // Remember the sequence in which you add these components matters
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=index}/{id?}"
+                    );
+            });
         }
     }
 }
