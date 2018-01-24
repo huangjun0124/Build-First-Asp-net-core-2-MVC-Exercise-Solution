@@ -37,6 +37,7 @@ namespace FirstAspNetCore2MVC
             // use ef core
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IPieRepository, PieDbRepository>();
+            services.AddTransient<IFeedBackRepository, FeedBackDbRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
