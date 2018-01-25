@@ -63,6 +63,10 @@ namespace FirstAspNetCore2MVC.Controllers
                 {
                     return RedirectToAction("Login");
                 }
+                else
+                {
+                    ModelState.AddModelError("", result.ToString());
+                }
             }
             return View(model);
         }

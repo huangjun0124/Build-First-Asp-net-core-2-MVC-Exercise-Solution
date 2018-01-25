@@ -39,6 +39,14 @@ namespace FirstAspNetCore2MVC
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            });
+
             services.AddTransient<IPieRepository, PieDbRepository>();
             services.AddTransient<IFeedBackRepository, FeedBackDbRepository>();
         }
