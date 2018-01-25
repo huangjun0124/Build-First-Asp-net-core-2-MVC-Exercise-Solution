@@ -6,6 +6,7 @@ using FirstAspNetCore2MVC.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +37,8 @@ namespace FirstAspNetCore2MVC
 
             // use ef core
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddTransient<IPieRepository, PieDbRepository>();
             services.AddTransient<IFeedBackRepository, FeedBackDbRepository>();
         }
@@ -48,10 +51,12 @@ namespace FirstAspNetCore2MVC
             app.UseStatusCodePages();
             // go and search static files(image, css, js, html, etc) in wwwroot folder by default and return
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+
             // maps to {controller=Home}/{action=index}/{id?}
             //app.UseMvcWithDefaultRoute();
             // Remember the sequence in which you add these components matters
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
